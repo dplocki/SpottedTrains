@@ -1,4 +1,6 @@
-﻿namespace SpottedTrains
+﻿using System.Windows;
+
+namespace SpottedTrains
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
