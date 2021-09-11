@@ -4,9 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpottedTrains"
+        Title="MainWindow"
+        Height="450"
+        Width="800"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
 
+    <Window.Resources>
+        <ControlTemplate x:Key="errorTemplate">
+            <Border BorderBrush="OrangeRed" BorderThickness="2">
+                <Grid>
+                    <AdornedElementPlaceholder/>
+                    <TextBlock Text="{Binding [0].ErrorContent}" Foreground="OrangeRed"
+                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Margin="0,0,4,0"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid Margin="100">
+        <StackPanel>
+            <Label>Username</Label>
+            <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}">
+                <TextBox.Text>
+                    <Binding Path="TextValue" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:MinimumCharacterRule MinimumCharacters="5"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <Button>Submit</Button>
+        </StackPanel>
     </Grid>
 </Window>

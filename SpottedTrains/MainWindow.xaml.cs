@@ -10,6 +10,7 @@ namespace SpottedTrains
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
     }
 }
