@@ -10,6 +10,7 @@
 
         <DockPanel x:Name="dpMain" LastChildFill="True">
             <Label>My text box:</Label>
+            <TextBox x:Name="TheTextBox" Width="100" Height="20" />
             <Label x:Name="lblErrorMessage" DockPanel.Dock="Right" Margin="0" Width="auto" Height="auto"  />
         </DockPanel>
 

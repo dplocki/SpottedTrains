@@ -10,7 +10,6 @@ namespace SpottedTrains
     /// </summary>
     public partial class MyTextbox : UserControl
     {
-        private TextBox _textBox = null;
 
         private ObservableCollection<ValidationRule> _validationRules = null;
 
@@ -31,21 +30,20 @@ namespace SpottedTrains
 
         private void CreateControls()
         {
-            _textBox = new TextBox() { Width = 100, Height = 20 };
-            _textBox.LostFocus += _textBox_LostFocus;
-            _textBox.Style = TextBoxErrorStyle;
+            TheTextBox.LostFocus += _textBox_LostFocus;
+            TheTextBox.Style = TextBoxErrorStyle;
         }
 
         void _textBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            var bindingExpression = _textBox.GetBindingExpression(TextBox.TextProperty);
+            var bindingExpression = TheTextBox.GetBindingExpression(TextBox.TextProperty);
             if (bindingExpression != null)
                 bindingExpression.UpdateSource();
         }
 
         void RequiredTextBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (_textBox != null)
+            if (TheTextBox != null)
             {
                 var binding = new Binding();
                 binding.Source = DataContext;
@@ -59,9 +57,7 @@ namespace SpottedTrains
 
 
                 binding.Path = new PropertyPath(BoundPropertyName);
-                _textBox.SetBinding(TextBox.TextProperty, binding);
-
-                dpMain.Children.Add(_textBox);
+                TheTextBox.SetBinding(TextBox.TextProperty, binding);
             }
 
         }
@@ -82,7 +78,7 @@ namespace SpottedTrains
 
             get
             {
-                return _textBox.Text;
+                return TheTextBox.Text;
             }
 
         }
