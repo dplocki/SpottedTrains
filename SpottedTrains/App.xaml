@@ -1,9 +1,10 @@
 ﻿<Application x:Class="SpottedTrains.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:SpottedTrains"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+        <Style TargetType="{x:Type local:LabeledTextField}">
             <Setter Property="Validation.ErrorTemplate">
                 <Setter.Value>
                     <ControlTemplate>

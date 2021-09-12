@@ -11,13 +11,17 @@
         d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
     <Grid Margin="100">
         <StackPanel>
-            <local:MyTextbox BoundPropertyName="TextValue">
-                <local:MyTextbox.ValidationRules>
-                    <local:MinimumCharacterRule MinimumCharacters="4" />
-                </local:MyTextbox.ValidationRules>
-            </local:MyTextbox>
+            <local:LabeledTextField>
+                <local:LabeledTextField.Value>
+                    <Binding Path="WelcomeTitle" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:MinimumCharacterRule MinimumCharacters="4" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </local:LabeledTextField.Value>
+            </local:LabeledTextField>
 
-            <Button>Submit</Button>
+            <Button Click="Button_Click">Submit</Button>
         </StackPanel>
     </Grid>
 </Window>
